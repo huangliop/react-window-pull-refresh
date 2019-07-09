@@ -13,9 +13,10 @@ class Demo extends Component {
     this.loadNextPage(0,10);
   }
   render() {
+    const isMobile=/Mobile/.test(window.navigator.userAgent)
     return <div>
       <h1 style={{textAlign:'center',margin:0,}}>下拉刷新Demo</h1>
-      <Example  total={55} 
+      {isMobile?<Example  total={55} 
                 items={this.state.list} 
                 isNextPageLoading={this.state.loading} 
                 loadNextPage={this.loadNextPage} 
@@ -23,7 +24,11 @@ class Demo extends Component {
                 height={500}
                 handlePullRefresh={this.handleRefresh}
                 itemRender={this.itemRender}>
-      </Example>
+      </Example>:
+      <h2 style={{textAlign:'center'}}>
+        切换导手机模式，下拉刷新才有效
+      </h2>
+      }
     </div>
   }
   itemRender=(item,index,style)=>{

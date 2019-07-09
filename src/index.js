@@ -13,7 +13,7 @@ import PullToRefresh from './PullToRefresh';
  */
 const List = React.memo(
     ({
-        total,
+        total=9999,
         isNextPageLoading,
         items=[],
         itemRender,
