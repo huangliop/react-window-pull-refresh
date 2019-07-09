@@ -17,6 +17,7 @@
     "start": "nwb serve-react-demo",
     "test": "nwb test-react",
     "test:coverage": "nwb test-react --coverage",
+    "copydemo": "xcopy demo\\dist docs /S /Y",
     "test:watch": "nwb test-react --server"
   },
   "dependencies": {},
@@ -26,7 +27,9 @@
   "devDependencies": {
     "nwb": "0.23.x",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-window": "^1.8.4",
+    "react-window-infinite-loader": "^1.0.3"
   },
   "author": "",
   "homepage": "",
