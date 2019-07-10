@@ -31,8 +31,8 @@
     "react-window": "^1.8.4",
     "react-window-infinite-loader": "^1.0.3"
   },
-  "author": "",
-  "homepage": "",
+  "author": "huangli",
+  "homepage": "https://github.com/huangliop/react-window-pull-refresh",
   "license": "MIT",
   "repository": "",
   "keywords": [
