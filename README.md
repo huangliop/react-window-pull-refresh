@@ -1,12 +1,12 @@
 # react-window-pull-refresh
 
-[![Travis][build-badge]][build]
-[![npm package][npm-badge]][npm]
-[![Coveralls][coveralls-badge]][coveralls]
-
-该组件为列表展示组件，基于[react-window](https://github.com/bvaughn/react-window).并添加了下拉刷新和分页加载功能。
+该组件为移动端专用列表展示组件，基于[react-window](https://github.com/bvaughn/react-window).并添加了下拉刷新和分页加载功能。
 
 效果见[Demo](https://huangliop.github.io/react-window-pull-refresh/)
+
+## 安装
+
+`npm install react-window-pull-refresh --save`
 
 ## 必传参数
 
@@ -32,13 +32,25 @@
 
 ## 具体使用方法
 
-更多具体使用方法请参考demo/src/index.js
+更多具体使用方法请参考[Demo](demo/src/index.js)
 
-[build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
-[build]: https://travis-ci.org/user/repo
+## 注意事项
 
-[npm-badge]: https://img.shields.io/npm/v/npm-package.png?style=flat-square
-[npm]: https://www.npmjs.org/package/npm-package
+为了能够正确的计算滚动的高度，请在`itemRender`函数中将`style`设置到节点上，代码如下
 
-[coveralls-badge]: https://img.shields.io/coveralls/user/repo/master.png?style=flat-square
-[coveralls]: https://coveralls.io/github/user/repo
+```
+ itemRender=(item,index,style)=>{
+    const myStyle={
+      ...style,
+      backgroundColor:index%2?'#ffffff':'#e2e2e2',
+      display:'flex',
+      justifyContent:'center',
+      alignItems:'center'
+    }
+    return (
+      <div style={myStyle}>
+        {index}: {item}
+      </div>
+    )
+  }
+```

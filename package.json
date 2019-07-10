@@ -1,6 +1,6 @@
 {
   "name": "react-window-pull-refresh",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "description": "react-window-pull-refresh React component",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -36,6 +36,9 @@
   "license": "MIT",
   "repository": "",
   "keywords": [
+    "pull to refresh",
+    "react",
+    "list",
     "react-component"
   ]
 }
