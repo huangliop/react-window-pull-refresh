@@ -1,6 +1,6 @@
 {
   "name": "react-window-pull-refresh",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "react-window-pull-refresh React component",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -20,16 +20,17 @@
     "copydemo": "xcopy demo\\dist docs /S /Y",
     "test:watch": "nwb test-react --server"
   },
-  "dependencies": {},
+  "dependencies": {
+    "react-window": "^1.8.4",
+    "react-window-infinite-loader": "^1.0.3"
+  },
   "peerDependencies": {
     "react": "16.x"
   },
   "devDependencies": {
     "nwb": "0.23.x",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-window": "^1.8.4",
-    "react-window-infinite-loader": "^1.0.3"
+    "react-dom": "^16.8.6"
   },
   "author": "huangli",
   "homepage": "https://github.com/huangliop/react-window-pull-refresh",

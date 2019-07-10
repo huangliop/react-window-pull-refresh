@@ -1,7 +1,5 @@
 # react-window-pull-refresh
 
-
-[![Build Status](https://travis-ci.org/huangliop/react-window-pull-refresh.svg?branch=master)](https://travis-ci.org/huangliop/react-window-pull-refresh)
 [![npm package][npm-badge]][npm]
 
 该组件为移动端列表展示组件，基于[react-window](https://github.com/bvaughn/react-window).并添加了下拉刷新和分页加载功能。
