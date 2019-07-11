@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
+const txt={
+    pull:"下拉刷新",
+    up:"松开加载",
+    loading:"加载中"
+}
 /**
  *  触发刷新的滚动距离
  */
@@ -45,9 +51,9 @@ export default class PullToRefresh extends Component {
             evt.preventDefault();
             this.scrollingDirection = DOWN;
             if (this.scrollingDistance > TRIGGER_DISTANCE) {
-                this.textRef.current.innerText = '松开加载';
+                this.textRef.current.innerText = txt.up;
             } else {
-                this.textRef.current.innerText = '下拉加载更多';
+                this.textRef.current.innerText =txt.pull;
                 this.textRef.current.style.transform=`translateY(${this.scrollingDistance}px)`
                 this.ref.current.style.transform = `translateY(${this.scrollingDistance}px)`;
             }
@@ -61,9 +67,9 @@ export default class PullToRefresh extends Component {
         if (this.scrollingDirection === DOWN && this.scrollingDistance > TRIGGER_DISTANCE) {
             elm.style.transform = `translateY(${TEXT_HEIGHT}px)`;
             textElm.style.transform = `translateY(${TEXT_HEIGHT}px)`;
-            textElm.innerText = '加载中';
+            textElm.innerText = txt.loading;
             this.props.handleRefresh().then(() => {
-                textElm.innerText = '下拉加载更多';
+                textElm.innerText = txt.pull;
 
                 textElm.style.transform = 'translateY(0px)';
                 elm.style.transform = 'translateY(0px)';
@@ -99,7 +105,7 @@ export default class PullToRefresh extends Component {
                         justifyContent: 'center'
                     }}
                     ref={this.textRef}>
-                    下拉加载更多
+                    {txt.pull}
                 </div>
                 <div ref={this.ref} >
                 {this.props.children}
