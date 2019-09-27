@@ -40,7 +40,7 @@
 
 为了能够正确的计算滚动的高度，请在`itemRender`函数中将`style`设置到节点上，代码如下
 
-```
+```js
  itemRender=(item,index,style)=>{
     const myStyle={
       ...style,
