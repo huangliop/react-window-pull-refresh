@@ -69,7 +69,11 @@ const List = React.memo(
         )}
         </InfiniteLoader>);
         return items.length === 0 ? (
-            <EmptyData />
+            handlePullRefresh?(
+                <PullToRefresh  handleRefresh={handlePullRefresh}>
+                <EmptyData />
+            </PullToRefresh>
+            ):<EmptyData />
         ) : (
             handlePullRefresh?<PullToRefresh disabled={disablePull} handleRefresh={handlePullRefresh}>
                {tempList}
