@@ -96,7 +96,7 @@ export default class PullToRefresh extends Component {
     }
     render() {
         return (
-            <div style={{ position: 'relative', overflow: 'hidden', flexGrow: '1' }}>
+            <div style={{ position: 'relative', overflow: 'hidden', flexGrow: '1',display:'flex' }}>
                 <div
                     style={{
                         position: 'absolute',
@@ -112,7 +112,7 @@ export default class PullToRefresh extends Component {
                     ref={this.textRef}>
                     {txt.pull}
                 </div>
-                <div ref={this.ref} style={{ height: '100%' }}>
+                <div ref={this.ref} style={{  flexGrow: '1'}}>
                     {this.props.children}
                 </div>
             </div>
