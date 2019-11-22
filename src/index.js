@@ -1,5 +1,5 @@
 import React, { useState,useRef } from 'react';
-import { FixedSizeList } from 'react-window';
+import { FixedSizeList,VariableSizeList } from 'react-window';
 import InfiniteLoader from 'react-window-infinite-loader';
 import PullToRefresh from './PullToRefresh';
 import useComponentSize from '@rehooks/component-size';
@@ -53,22 +53,40 @@ const List = React.memo(
         const h = useComponentSize(ref).height;
         const tempList= 
         (<div ref={ref} style={{ flex: '1',height:'100%' }}><InfiniteLoader isItemLoaded={isItemLoaded} itemCount={itemCount} loadMoreItems={loadMoreItems}>
-        {({ onItemsRendered, ref }) => (
-            <FixedSizeList
-                height={height||h}
-                itemCount={itemCount}
-                itemSize={itemHeight}
-                ref={ref}
-                initialScrollOffset={initialScrollOffset}
-                onScroll={params => {
-                    setDisablePull(params.scrollOffset !== 0);
-                    onScroll&&onScroll(params);
-                }}
-                onItemsRendered={onItemsRendered}
-                width={width}>
-                {Row}
-            </FixedSizeList>
-        )}
+        {({ onItemsRendered, ref }) => {
+            if (typeof itemHeight==='function') {
+               return  <VariableSizeList
+                    height={height||h}
+                    itemCount={itemCount}
+                    itemSize={itemHeight}
+                    ref={ref}
+                    initialScrollOffset={initialScrollOffset}
+                    onScroll={params => {
+                        setDisablePull(params.scrollOffset !== 0);
+                        onScroll&&onScroll(params);
+                    }}
+                    onItemsRendered={onItemsRendered}
+                    width={width}>
+                    {Row}
+                </VariableSizeList>
+            } else {
+              return  <FixedSizeList
+                    height={height||h}
+                    itemCount={itemCount}
+                    itemSize={itemHeight}
+                    ref={ref}
+                    initialScrollOffset={initialScrollOffset}
+                    onScroll={params => {
+                        setDisablePull(params.scrollOffset !== 0);
+                        onScroll&&onScroll(params);
+                    }}
+                    onItemsRendered={onItemsRendered}
+                    width={width}>
+                    {Row}
+                </FixedSizeList>                
+            }
+
+        }}
         </InfiniteLoader></div>);
         return items.length === 0 ? (
             handlePullRefresh?(

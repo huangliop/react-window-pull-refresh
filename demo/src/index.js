@@ -20,7 +20,7 @@ class Demo extends Component {
                 items={this.state.list} 
                 isNextPageLoading={this.state.loading} 
                 loadNextPage={this.loadNextPage} 
-                itemHeight={80}
+                itemHeight={()=>80}
                 // height={500}
                 handlePullRefresh={this.handleRefresh}
                 itemRender={this.itemRender}>

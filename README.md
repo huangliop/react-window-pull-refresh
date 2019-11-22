@@ -18,7 +18,7 @@
 |items|array|需要展示的数据的列表数组|
 |itemRender|function|每项渲染函数的回调`function(item,index,style)`|
 |loadNextPage|function|加载下一页的函数回调`(startIndex: number, stopIndex: number) => Promise<void>`,必须返回Promise对象|
-|itemHeight|number|每项的显示高度|
+|itemHeight|number 或者 function |每项的显示高度,function是用于每项高度不固定的情况|
 
 
 ## 可选参数
