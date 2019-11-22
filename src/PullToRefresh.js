@@ -96,7 +96,7 @@ export default class PullToRefresh extends Component {
     }
     render() {
         return (
-            <div style={{ position: 'relative', overflow: 'hidden', flexGrow: '1',display:'flex' }}>
+            <div style={{ position: 'relative', overflow: 'hidden', flexGrow: '1',display:'flex',height:'100%' }}>
                 <div
                     style={{
                         position: 'absolute',

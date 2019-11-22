@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState,useRef } from 'react';
 import { FixedSizeList } from 'react-window';
 import InfiniteLoader from 'react-window-infinite-loader';
 import PullToRefresh from './PullToRefresh';
+import useComponentSize from '@rehooks/component-size';
 
 /**
  * @description 列表渲染器
@@ -26,6 +26,7 @@ const List = React.memo(
         handlePullRefresh
     }) => {
         const [disablePull, setDisablePull] = useState(false);
+        const ref = useRef(null);
         const hasNextPage=items.length<total;
         const itemCount = hasNextPage ? items.length + 1 : items.length;
         const loadMoreItems = isNextPageLoading ? undefined : loadNextPage;
@@ -49,11 +50,12 @@ const List = React.memo(
                 );
             }
         };
+        const h = useComponentSize(ref).height;
         const tempList= 
-        (<InfiniteLoader isItemLoaded={isItemLoaded} itemCount={itemCount} loadMoreItems={loadMoreItems}>
+        (<div ref={ref} style={{ flex: '1',height:'100%' }}><InfiniteLoader isItemLoaded={isItemLoaded} itemCount={itemCount} loadMoreItems={loadMoreItems}>
         {({ onItemsRendered, ref }) => (
             <FixedSizeList
-                height={height}
+                height={height||h}
                 itemCount={itemCount}
                 itemSize={itemHeight}
                 ref={ref}
@@ -67,7 +69,7 @@ const List = React.memo(
                 {Row}
             </FixedSizeList>
         )}
-        </InfiniteLoader>);
+        </InfiniteLoader></div>);
         return items.length === 0 ? (
             handlePullRefresh?(
                 <PullToRefresh  handleRefresh={handlePullRefresh}>

@@ -14,14 +14,14 @@ class Demo extends Component {
   }
   render() {
     const isMobile=/Mobile/.test(window.navigator.userAgent)
-    return <div>
+    return <div style={{position:'absolute',left:0,top:0,right:0,left:0,bottom:0,display:'flex',flexDirection:'column'}}>
       <h1 style={{textAlign:'center',margin:0,}}>下拉刷新Demo</h1>
       {isMobile?<Example  total={55} 
                 items={this.state.list} 
                 isNextPageLoading={this.state.loading} 
                 loadNextPage={this.loadNextPage} 
                 itemHeight={80}
-                height={500}
+                // height={500}
                 handlePullRefresh={this.handleRefresh}
                 itemRender={this.itemRender}>
       </Example>:

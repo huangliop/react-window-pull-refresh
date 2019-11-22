@@ -17,7 +17,6 @@
 |isNextPageLoading|bool|是否正在远程获取下一页数据|
 |items|array|需要展示的数据的列表数组|
 |itemRender|function|每项渲染函数的回调`function(item,index,style)`|
-|height|number|列表容器的高度|
 |loadNextPage|function|加载下一页的函数回调`(startIndex: number, stopIndex: number) => Promise<void>`,必须返回Promise对象|
 |itemHeight|number|每项的显示高度|
 
@@ -28,6 +27,7 @@
 |--|--|--|
 |total|number|显示数据的总长度,默认9999
 |width|number|列表展示的宽度
+|height|number|列表容器的高度,如果不传，组件会填充父元素，建议父元素使用flex布局|
 |initialScrollOffset|number|列表初始展示的滚动位置，可以配合onScroll做到返回该页面，记录上次滚动的位置|
 |onScroll|function|滚动的回调`function({scrollDirection,scrollOffset,scrollUpdateWasRequested})`|
 |handlePullRefresh|function|下拉刷新的事件回调,如果不传就没有下拉刷新功能`function()`|
