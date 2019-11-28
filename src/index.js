@@ -3,6 +3,7 @@ import { FixedSizeList,VariableSizeList } from 'react-window';
 import InfiniteLoader from 'react-window-infinite-loader';
 import PullToRefresh from './PullToRefresh';
 import useComponentSize from '@rehooks/component-size';
+import PropTypes from 'prop-types';
 
 /**
  * @description 列表渲染器
@@ -25,6 +26,7 @@ const List = React.memo(
         onScroll,
         handlePullRefresh,
         emptyNode,
+        listOtherProps
     }) => {
         const [disablePull, setDisablePull] = useState(false);
         const ref = useRef(null);
@@ -67,7 +69,8 @@ const List = React.memo(
                         onScroll&&onScroll(params);
                     }}
                     onItemsRendered={onItemsRendered}
-                    width={width}>
+                    width={width}
+                    {...listOtherProps} >
                     {Row}
                 </VariableSizeList>
             } else {
@@ -82,7 +85,8 @@ const List = React.memo(
                         onScroll&&onScroll(params);
                     }}
                     onItemsRendered={onItemsRendered}
-                    width={width}>
+                    width={width}
+                    {...listOtherProps} >
                     {Row}
                 </FixedSizeList>                
             }
@@ -118,11 +122,20 @@ function EmptyData() {
         </div>
     );
 }
-// List.propTypes = {
-//     data: PropTypes.any,
-//     total: PropTypes.number,
-//     itemHeight: PropTypes.number,
-//     loadMore: PropTypes.func
-// };
+List.propTypes = {
+    isNextPageLoading:PropTypes.bool.isRequired,
+    item:PropTypes.array.isRequired,
+    itemRender:PropTypes.func.isRequired,
+    loadNextPage:PropTypes.func.isRequired,
+    itemHeight:PropTypes.oneOfType([PropTypes.number,PropTypes.func]),
+    height:PropTypes.number,
+    width:PropTypes.number,
+    total:PropTypes.number,
+    initialScrollOffset:PropTypes.number,
+    onScroll:PropTypes.func,
+    handlePullRefresh:PropTypes.func,
+    emptyNode:PropTypes.node,
+    listOtherProps:PropTypes.object
+};
 
 export default List;

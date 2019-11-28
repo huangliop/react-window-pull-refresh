@@ -21,6 +21,7 @@ class Demo extends Component {
                 isNextPageLoading={this.state.loading} 
                 loadNextPage={this.loadNextPage} 
                 itemHeight={()=>80}
+                listOtherProps={{className:'myclass'}}
                 // height={500}
                 handlePullRefresh={this.handleRefresh}
                 itemRender={this.itemRender}>

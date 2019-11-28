@@ -32,6 +32,7 @@
 |onScroll|function|滚动的回调`function({scrollDirection,scrollOffset,scrollUpdateWasRequested})`|
 |handlePullRefresh|function|下拉刷新的事件回调,如果不传就没有下拉刷新功能`function()`|
 |emptyNode|React Node(React组件)|获取的数据为空时，展示的组件|
+|listOtherProps|object|react-window组件的其他参数，[参见](https://react-window.now.sh/#/api/FixedSizeList),只支持FixedSizeList和VariableSizeList|
 
 ## 具体使用方法
 
