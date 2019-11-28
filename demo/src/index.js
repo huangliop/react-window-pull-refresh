@@ -10,7 +10,7 @@ class Demo extends Component {
   }
   componentDidMount(){
     //第一次加载数据
-    // this.loadNextPage(0,10);
+    this.loadNextPage(0,10);
   }
   render() {
     const isMobile=/Mobile/.test(window.navigator.userAgent)
@@ -20,11 +20,12 @@ class Demo extends Component {
                 items={this.state.list} 
                 isNextPageLoading={this.state.loading} 
                 loadNextPage={this.loadNextPage} 
-                itemHeight={()=>80}
-                listOtherProps={{className:'myclass'}}
+                itemHeight={80}
                 // height={500}
                 handlePullRefresh={this.handleRefresh}
-                itemRender={this.itemRender}>
+                itemRender={this.itemRender}
+                loadingNode={<div>我是加载中的组件</div>}
+                listOtherProps={{className:'myclass'}}>
       </Example>:
       <h2 style={{textAlign:'center'}}>
         切换导手机模式，下拉刷新才有效

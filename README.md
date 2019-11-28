@@ -10,7 +10,15 @@
 
 `npm install react-window-pull-refresh --save`
 
-## 必传参数
+## ReactWindowPullRefresh 
+
+### 使用
+
+```js
+import List from 'react-window-pull-refresh'
+```
+
+### 必传参数
 
 |名称|类型|说明|
 |--|--|--|
@@ -21,7 +29,7 @@
 |itemHeight|number 或者 function |每项的显示高度,function是用于每项高度不固定的情况|
 
 
-## 可选参数
+### 可选参数
 
 |名称|类型|说明|
 |--|--|--|
@@ -32,7 +40,24 @@
 |onScroll|function|滚动的回调`function({scrollDirection,scrollOffset,scrollUpdateWasRequested})`|
 |handlePullRefresh|function|下拉刷新的事件回调,如果不传就没有下拉刷新功能`function()`|
 |emptyNode|React Node(React组件)|获取的数据为空时，展示的组件|
+|loadingNode|React Node(React组件)|列表拉到下面切正在加载时，展示的组件|
 |listOtherProps|object|react-window组件的其他参数，[参见](https://react-window.now.sh/#/api/FixedSizeList),只支持FixedSizeList和VariableSizeList|
+
+## PullToRefresh
+
+这个组件可以使其他组件具有下拉刷新的功能
+
+### 使用
+
+```js
+import {PullToRefresh} from 'react-window-pull-refresh'
+
+function Demo ({handlePullRefresh}){
+  return <PullToRefresh  handleRefresh={handlePullRefresh}>
+                <div>内容区域<div/>
+            </PullToRefresh>
+}
+```
 
 ## 具体使用方法
 

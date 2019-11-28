@@ -26,6 +26,8 @@ const List = React.memo(
         onScroll,
         handlePullRefresh,
         emptyNode,
+        loadingNode,
+
         listOtherProps
     }) => {
         const [disablePull, setDisablePull] = useState(false);
@@ -46,9 +48,8 @@ const List = React.memo(
                     alignItems: 'center',
                     justifyContent: 'center'
                 }
-                return (
-                    <div style={mStyle}>
-                            加载中。。。
+                return (<div style={mStyle}>
+                            {loadingNode||'加载中。。。'}
                     </div>
                 );
             }
@@ -124,9 +125,9 @@ function EmptyData() {
 }
 List.propTypes = {
     isNextPageLoading:PropTypes.bool.isRequired,
-    item:PropTypes.array.isRequired,
     itemRender:PropTypes.func.isRequired,
     loadNextPage:PropTypes.func.isRequired,
+    item:PropTypes.array,
     itemHeight:PropTypes.oneOfType([PropTypes.number,PropTypes.func]),
     height:PropTypes.number,
     width:PropTypes.number,
@@ -137,5 +138,5 @@ List.propTypes = {
     emptyNode:PropTypes.node,
     listOtherProps:PropTypes.object
 };
-
+export {PullToRefresh}
 export default List;
