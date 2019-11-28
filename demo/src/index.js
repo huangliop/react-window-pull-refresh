@@ -10,7 +10,7 @@ class Demo extends Component {
   }
   componentDidMount(){
     //第一次加载数据
-    this.loadNextPage(0,10);
+    // this.loadNextPage(0,10);
   }
   render() {
     const isMobile=/Mobile/.test(window.navigator.userAgent)

@@ -31,6 +31,7 @@
 |initialScrollOffset|number|列表初始展示的滚动位置，可以配合onScroll做到返回该页面，记录上次滚动的位置|
 |onScroll|function|滚动的回调`function({scrollDirection,scrollOffset,scrollUpdateWasRequested})`|
 |handlePullRefresh|function|下拉刷新的事件回调,如果不传就没有下拉刷新功能`function()`|
+|emptyNode|React Node(React组件)|获取的数据为空时，展示的组件|
 
 ## 具体使用方法
 

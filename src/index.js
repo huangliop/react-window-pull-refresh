@@ -23,7 +23,8 @@ const List = React.memo(
         width,
         initialScrollOffset,
         onScroll,
-        handlePullRefresh
+        handlePullRefresh,
+        emptyNode,
     }) => {
         const [disablePull, setDisablePull] = useState(false);
         const ref = useRef(null);
@@ -91,9 +92,9 @@ const List = React.memo(
         return items.length === 0 ? (
             handlePullRefresh?(
                 <PullToRefresh  handleRefresh={handlePullRefresh}>
-                <EmptyData />
+                {emptyNode||<EmptyData />}
             </PullToRefresh>
-            ):<EmptyData />
+            ):emptyNode||<EmptyData />
         ) : (
             handlePullRefresh?<PullToRefresh disabled={disablePull} handleRefresh={handlePullRefresh}>
                {tempList}
@@ -105,15 +106,13 @@ function EmptyData() {
     return (
         <div
             style={{
-                position: 'absolute',
-                left: 0,
-                top: 0,
-                right: 0,
-                bottom: 0,
-                width: '100px',
-                height: '30px',
                 margin: 'auto',
-                color: '#999999'
+                color: '#999999',
+                height: '100%',
+                width: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
             }}>
             暂时没有数据
         </div>
