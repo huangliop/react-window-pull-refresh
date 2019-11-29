@@ -1,6 +1,6 @@
 {
   "name": "react-window-pull-refresh",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "react-window-pull-refresh React component",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -22,8 +22,8 @@
   },
   "dependencies": {
     "@rehooks/component-size": "^1.0.3",
-    "react-window": "^1.8.4",
-    "react-window-infinite-loader": "^1.0.3"
+    "react-window": "^1.8.5",
+    "react-window-infinite-loader": "^1.0.5"
   },
   "peerDependencies": {
     "react": "16.x"
