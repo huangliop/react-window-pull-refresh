@@ -56,7 +56,7 @@ const List = React.memo(
         };
         const h = useComponentSize(ref).height;
         const tempList= 
-        (<div ref={ref} style={{ flex: '1',height:'100%' }}><InfiniteLoader isItemLoaded={isItemLoaded} itemCount={itemCount} loadMoreItems={loadMoreItems}>
+        (<div ref={ref} style={{ flexGrow: '1'}}><InfiniteLoader isItemLoaded={isItemLoaded} itemCount={itemCount} loadMoreItems={loadMoreItems}>
         {({ onItemsRendered, ref }) => {
             if (typeof itemHeight==='function') {
                return  <VariableSizeList
