@@ -25,7 +25,7 @@ import List from 'react-window-pull-refresh'
 |isNextPageLoading|bool|是否正在远程获取下一页数据|
 |items|array|需要展示的数据的列表数组|
 |itemRender|function|每项渲染函数的回调`function(item,index,style)`|
-|loadNextPage|function|加载下一页的函数回调`(startIndex: number, stopIndex: number) => Promise<void>`,必须返回Promise对象|
+|loadNextPage|function|加载下一页的函数回调`(startIndex: number, stopIndex: number)`|
 |itemHeight|number 或者 function |每项的显示高度,function是用于每项高度不固定的情况|
 
 
@@ -38,7 +38,7 @@ import List from 'react-window-pull-refresh'
 |height|number|列表容器的高度,如果不传，组件会填充父元素，建议父元素使用flex布局|
 |initialScrollOffset|number|列表初始展示的滚动位置，可以配合onScroll做到返回该页面，记录上次滚动的位置|
 |onScroll|function|滚动的回调`function({scrollDirection,scrollOffset,scrollUpdateWasRequested})`|
-|handlePullRefresh|function|下拉刷新的事件回调,如果不传就没有下拉刷新功能`function()`|
+|handlePullRefresh|function|下拉刷新的事件回调,如果不传就没有下拉刷新功能`function()`,必须返回Promise对象|
 |emptyNode|React Node(React组件)|获取的数据为空时，展示的组件|
 |loadingNode|React Node(React组件)|列表拉到下面切正在加载时，展示的组件|
 |listOtherProps|object|react-window组件的其他参数，[参见](https://react-window.now.sh/#/api/FixedSizeList),只支持FixedSizeList和VariableSizeList|
@@ -70,7 +70,7 @@ function Demo ({handlePullRefresh}){
 ```js
  itemRender=(item,index,style)=>{
     const myStyle={
-      ...style,
+      ...style, //这里必须这样
       backgroundColor:index%2?'#ffffff':'#e2e2e2',
       display:'flex',
       justifyContent:'center',
